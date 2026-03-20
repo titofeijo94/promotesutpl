@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte Isla Mall del Pacífico - En Vivo</title>
+    <title>Reporte Promotores - En Vivo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -31,7 +31,7 @@
                 </div>
                 <div>
                     <h1 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                        Isla Mall del Pacífico
+                        Reporte Promotores
                         <span class="px-2 py-0.5 rounded-full bg-green-100 text-green-700 text-[10px] font-bold uppercase border border-green-200 flex items-center gap-1">
                             <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> En Vivo
                         </span>
@@ -430,7 +430,7 @@
             const blob = new Blob([tableHTML], { type: 'application/vnd.ms-excel' });
             const link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
-            link.download = `Reporte_Isla_Mall_${new Date().toLocaleDateString().replace(/\//g, '-')}.xls`;
+            link.download = `Reporte_Promotores_${new Date().toLocaleDateString().replace(/\//g, '-')}.xls`;
             link.click();
         }
     </script>
