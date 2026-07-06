@@ -7,6 +7,7 @@
     <!-- Tailwind CSS para maquetación rápida -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -37,6 +38,11 @@
         .animate-pulse-glow {
             animation: pulse-glow 2s infinite ease-in-out;
         }
+        /* Checkbox modificado */
+        .custom-checkbox:checked {
+            background-color: #10b981;
+            border-color: #10b981;
+        }
     </style>
 </head>
 <body class="stadium-glow text-white min-h-screen flex flex-col justify-between relative selection:bg-emerald-500 selection:text-black">
@@ -50,7 +56,7 @@
         <div class="w-full max-w-md text-center flex flex-col items-center">
             
             <!-- Logo Superior (Estilo Sorti365) -->
-            <div class="mb-10 flex items-center gap-2 justify-center bg-black/40 backdrop-blur-md py-2 px-5 rounded-full border border-emerald-500/10">
+            <div class="mb-10 flex items-center gap-2 justify-center bg-black/40 backdrop-blur-md py-2 px-5 rounded-full border border-emerald-500/10 shadow-[0_0_15px_rgba(34,197,94,0.1)]">
                 <span class="text-emerald-500 animate-spin" style="animation-duration: 12s;">
                     <!-- Trébol / Estrella Verde de Sorti365 SVG -->
                     <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
@@ -58,57 +64,56 @@
                     </svg>
                 </span>
                 <div>
-                    <span id="view-brand-name" class="font-black text-lg tracking-tight text-white uppercase">Sorti<span class="text-emerald-500">365</span></span>
-                    <span class="block text-[8px] tracking-widest text-emerald-400/80 font-bold uppercase -mt-1">Pronósticos y juegos</span>
+                    <span id="view-brand-name" class="font-black text-lg tracking-tight text-white uppercase">SEPY<span class="text-emerald-500">BET</span></span>
+                    <span class="block text-[8px] tracking-widest text-emerald-400/80 font-bold uppercase -mt-1">Atención Oficial</span>
                 </div>
             </div>
 
-            <!-- TÍTULOS CENTRALES (Inspirados en la imagen del mundial) -->
-            <div class="mb-10 px-4">
+            <!-- TÍTULOS CENTRALES -->
+            <div class="mb-10 px-4 relative">
                 <!-- Luces de reflectores simuladas en el fondo del texto -->
-                <div class="absolute w-72 h-32 bg-emerald-500/10 rounded-full blur-3xl -translate-y-12 left-1/2 -translate-x-1/2 pointer-events-none"></div>
+                <div class="absolute w-72 h-32 bg-emerald-500/15 rounded-full blur-3xl -translate-y-12 left-1/2 -translate-x-1/2 pointer-events-none"></div>
 
-                <span id="view-brand-subtitle" class="block text-sm font-bold uppercase tracking-[0.25em] text-emerald-400 mb-2">Soporte y Registro VIP</span>
+                <span id="view-brand-subtitle" class="block text-sm font-bold uppercase tracking-[0.25em] text-emerald-400 mb-2">Aviso Importante</span>
                 
-                <h1 id="view-main-title" class="text-5xl md:text-6xl font-extrabold tracking-tighter text-white uppercase leading-none drop-shadow-lg mb-2">
-                    COPA
+                <h1 id="view-main-title" class="text-4xl md:text-5xl font-extrabold tracking-tighter text-white uppercase leading-none drop-shadow-lg mb-2">
+                    NUEVO
                 </h1>
-                <h1 id="view-accent-title" class="world-cup-title text-6xl md:text-7xl font-extrabold tracking-tighter text-orange-500 uppercase leading-none drop-shadow-xl italic">
-                    MUNDIAL
+                <h1 id="view-accent-title" class="world-cup-title text-5xl md:text-6xl font-extrabold tracking-tighter text-emerald-500 uppercase leading-none drop-shadow-xl italic">
+                    NÚMERO
                 </h1>
             </div>
 
-            <!-- ENTRADA DE TEXTO DE INFLUENCER / RECOMENDADO -->
+            <!-- ENTRADA TIPO CHECKBOX -->
             <div class="w-full px-4 mb-8 text-left">
                 <div class="flex items-center justify-between mb-2 pl-1">
-                    <label class="block text-[13px] font-bold uppercase tracking-widest text-emerald-400">¿Quién te recomendó?</label>
-                    <span class="text-xs text-emerald-500/60 font-semibold uppercase tracking-wider">Código o Nombre</span>
+                    <label class="block text-[13px] font-bold uppercase tracking-widest text-emerald-400">Paso Único</label>
                 </div>
                 
-                <!-- Input de diseño mejorado estilo Ticket Premium con texto base un poco más grande -->
-                <div class="relative">
-                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-lg text-emerald-400/70 pointer-events-none">
-                        🎟️
-                    </span>
-                    <input type="text" id="influencer-input" oninput="updateMessage()" placeholder="Escribe el nombre aquí..." class="w-full bg-black/75 border-2 border-emerald-500/20 hover:border-emerald-500/40 rounded-2xl pl-11 pr-4 py-4 text-base font-bold text-white outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition-all backdrop-blur-md placeholder-slate-500/70">
-                </div>
-                <p class="text-[13px] text-slate-300/90 mt-2 pl-1 leading-relaxed font-medium">
-                    Ingresa el nombre del influencer o recomendado para activar los beneficios de tu cuenta Sorti365.
-                </p>
+                <!-- Recuadro para marcar -->
+                <label class="relative flex items-start gap-4 cursor-pointer bg-black/75 border-2 border-emerald-500/20 hover:border-emerald-500/40 rounded-2xl p-4 transition-all backdrop-blur-md group">
+                    <div class="flex items-center h-6">
+                        <input type="checkbox" id="terms-checkbox" onchange="updateButtonState()" class="custom-checkbox w-6 h-6 border-2 border-slate-500 rounded-md appearance-none checked:bg-emerald-500 checked:border-transparent outline-none transition-all cursor-pointer flex items-center justify-center">
+                        <i id="check-icon" class="fas fa-check absolute text-white text-sm hidden pointer-events-none" style="left: 1.3rem;"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-base font-bold text-white leading-tight">Ir al nuevo WhatsApp</span>
+                        <span class="text-[12px] text-slate-400 mt-1">Marca este cuadro para ser redirigido automáticamente al nuevo número de atención.</span>
+                    </div>
+                </label>
             </div>
 
             <!-- BOTÓN ÚNICO DE ALTA CONVERSIÓN -->
             <div class="w-full px-4 mb-6">
-                <!-- target="_top" evita cualquier bloqueo de WebKit/Safari al abrir desde apps como Instagram o Facebook -->
                 <a id="btn-main-action" href="#" target="_top" class="flex flex-col items-center justify-center w-full py-5 px-6 rounded-2xl transition-all duration-200">
-                    <span id="view-btn-text" class="text-xl font-black uppercase tracking-wider">🟢 INGRESAR AL CHAT VIP</span>
-                    <span id="view-btn-subtext" class="text-xs font-semibold mt-1">Registrarse & Obtener Pronósticos</span>
+                    <span id="view-btn-text" class="text-xl font-black uppercase tracking-wider">🟢 ESPERANDO CONFIRMACIÓN</span>
+                    <span id="view-btn-subtext" class="text-xs font-semibold mt-1">Por favor, marca el recuadro arriba</span>
                 </a>
             </div>
 
             <!-- Sello de Juego Responsable -->
             <p id="view-disclaimer" class="text-[9px] text-emerald-500/60 uppercase tracking-widest font-semibold">
-                *18 | Juega con responsabilidad | Aplican T&C
+                Soporte Oficial | Sepybet 2026
             </p>
 
         </div>
@@ -116,78 +121,65 @@
 
     <!-- Footer de la marca -->
     <footer class="py-4 text-center text-[10px] text-emerald-500/30 font-semibold uppercase tracking-widest relative z-10 bg-black/25">
-        &copy; Sorti365 Secure Bridge Technology
+        &copy; Sepybet - Nuevo Canal de Atención
     </footer>
 
     <!-- Notificaciones Flotantes -->
-    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 bg-emerald-500 text-slate-950 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 transition-all duration-300 z-50 text-sm font-bold">
+    <div id="toast" class="fixed bottom-6 right-6 transform translate-y-20 opacity-0 bg-emerald-500 text-slate-950 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 transition-all duration-300 z-50 text-sm font-bold pointer-events-none">
         <span id="toast-msg">¡Listo!</span>
     </div>
 
-    <!-- SCRIPT DE EFECTOS VISUALES Y CONTROL DE CONFIGURACIÓN -->
+    <!-- SCRIPT DE EFECTOS VISUALES Y CONTROL DE REDIRECCIÓN -->
     <script>
-        // Configuración inicial por defecto (Bloqueada para edición de visitantes)
         const config = {
-            phone: "593963041121",
-            brandSubtitle: "Soporte y Registro VIP",
-            mainTitle: "COPA",
-            accentTitle: "MUNDIAL",
-            btnText: "🟢 INGRESAR AL CHAT VIP",
-            btnSubtext: "Registrarse & Obtener Pronósticos",
-            disclaimer: "*18 | Juega con responsabilidad | Aplican T&C",
-            msgTemplate: "Hola vengo de parte de"
+            phone: "593939161656",
+            btnText: "🟢 REDIRIGIENDO...",
+            btnSubtext: "Abriendo WhatsApp en un instante",
+            msgTemplate: "Hola Sepybet, me gustaría acceder al nuevo número de atención."
         };
 
-        // Actualizar visualmente la página entera
-        function updateDOM() {
-            document.getElementById('view-brand-subtitle').innerText = config.brandSubtitle;
-            document.getElementById('view-main-title').innerText = config.mainTitle;
-            document.getElementById('view-accent-title').innerText = config.accentTitle;
-
-            // Actualizar el enlace final de WhatsApp basado en la entrada de texto
-            updateMessage();
-        }
-
-        // Se ejecuta cada vez que el usuario escribe en el campo de texto
-        function updateMessage() {
-            const nameInput = document.getElementById('influencer-input');
-            const name = nameInput.value.trim();
+        // Se ejecuta cada vez que el usuario interactúa con el checkbox
+        function updateButtonState() {
+            const checkbox = document.getElementById('terms-checkbox');
+            const checkIcon = document.getElementById('check-icon');
             const btn = document.getElementById('btn-main-action');
             const btnText = document.getElementById('view-btn-text');
             const btnSubtext = document.getElementById('view-btn-subtext');
 
-            if (!name) {
-                // Estado bloqueado (Vacío)
+            if (!checkbox.checked) {
+                // Estado bloqueado
+                checkIcon.classList.add('hidden');
                 btn.href = "#";
                 btn.onclick = function(e) {
                     e.preventDefault();
-                    showToast("Por favor, ingresa el nombre de referido para activar el botón");
+                    showToast("Por favor, marca el recuadro para continuar.");
                 };
                 
-                // Clases de Tailwind de bloqueo visual
+                // Clases visuales apagadas
                 btn.className = "flex flex-col items-center justify-center w-full py-5 px-6 bg-slate-800 text-slate-500 rounded-2xl border-2 border-slate-700/50 cursor-not-allowed opacity-60 transition-all duration-200";
-                
-                btnText.innerText = "⚠️ INGRESA UN NOMBRE";
-                btnSubtext.innerText = "Es obligatorio escribir quién te recomendó";
+                btnText.innerText = "🟢 ESPERANDO CONFIRMACIÓN";
+                btnSubtext.innerText = "Por favor, marca el recuadro arriba";
                 btnSubtext.className = "text-xs text-red-400 font-semibold mt-1";
             } else {
-                // Estado desbloqueado (Escribió un nombre)
-                const finalMsg = `${config.msgTemplate} ${name}`;
-                const finalWaUrl = `https://api.whatsapp.com/send?phone=${config.phone}&text=${encodeURIComponent(finalMsg)}`;
+                // Estado activado
+                checkIcon.classList.remove('hidden');
+                const finalWaUrl = `https://wa.me/${config.phone}?text=${encodeURIComponent(config.msgTemplate)}`;
                 
                 btn.href = finalWaUrl;
-                btn.onclick = null; // Remueve la restricción preventiva
+                btn.onclick = null;
                 
-                // Clases de Tailwind premium neon originales
-                btn.className = "btn-neon-glow animate-pulse-glow flex flex-col items-center justify-center w-full py-5 px-6 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 active:scale-95 text-slate-950 rounded-2xl transition-all duration-200";
-                
+                // Clases visuales encendidas (Neón verde)
+                btn.className = "btn-neon-glow animate-pulse-glow flex flex-col items-center justify-center w-full py-5 px-6 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 active:scale-95 text-slate-950 rounded-2xl transition-all duration-200 cursor-pointer";
                 btnText.innerText = config.btnText;
-                btnSubtext.innerText = `Mensaje listo: "${finalMsg}"`;
+                btnSubtext.innerText = config.btnSubtext;
                 btnSubtext.className = "text-xs text-slate-950/75 font-semibold mt-1";
+                
+                // Redirección automática instantánea tras 800ms
+                setTimeout(() => { window.location.href = finalWaUrl; }, 800);
             }
         }
 
-        // Mostrar Toast
+        // Sistema de notificaciones
         function showToast(message) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-msg').innerText = message;
@@ -200,9 +192,9 @@
             }, 3000);
         }
 
-        // Inicialización automática al cargar el documento
+        // Inicialización
         window.addEventListener('DOMContentLoaded', () => {
-            updateDOM();
+            updateButtonState(); // Setea el botón como apagado al entrar
             initParticles();
             animateParticles();
         });
@@ -223,9 +215,9 @@
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height + canvas.height; // Comienza abajo
+                this.y = Math.random() * canvas.height + canvas.height;
                 this.size = Math.random() * 3 + 0.5;
-                this.speedY = -(Math.random() * 0.8 + 0.2); // Sube despacio
+                this.speedY = -(Math.random() * 0.8 + 0.2);
                 this.speedX = Math.random() * 0.4 - 0.2;
                 this.opacity = Math.random() * 0.5 + 0.1;
             }
@@ -244,7 +236,7 @@
                 ctx.globalAlpha = this.opacity;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = '#22c55e'; // Partículas de luz verde
+                ctx.fillStyle = '#22c55e';
                 ctx.shadowBlur = 10;
                 ctx.shadowColor = '#22c55e';
                 ctx.fill();
